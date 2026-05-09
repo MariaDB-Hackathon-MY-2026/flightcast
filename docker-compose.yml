@@ -1,0 +1,137 @@
+services:
+
+  db:
+    image: mariadb:11.8
+    restart: unless-stopped
+    # CRITICAL: enable LOAD DATA LOCAL INFILE — OFF by default in MariaDB 11.8
+    command: --local-infile=1
+    env_file: .env
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./initdb:/docker-entrypoint-initdb.d:ro
+    networks:
+      - flightcast_net
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "healthcheck.sh",
+          "--connect",
+          "--innodb_initialized"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: flightcast-app:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PYTHONPATH: /app/src
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: ${MARIADB_DATABASE}
+      DB_USER: ${MARIADB_USER}
+      DB_PASSWORD: ${MARIADB_PASSWORD}
+      STREAMLIT_SERVER_PORT: 8501
+      STREAMLIT_SERVER_ADDRESS: 0.0.0.0
+      STREAMLIT_SERVER_HEADLESS: "true"
+      STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
+    ports:
+      - "${APP_PORT:-8501}:8501"
+    volumes:
+      - ./src:/app/src:ro
+    networks:
+      - flightcast_net
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8501/_stcore/health" ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    command: >
+      streamlit run src/flightcast/ui/app.py
+      --server.port=8501
+      --server.address=0.0.0.0
+
+  # FastAPI thin layer — backs the Next.js dashboard at web/
+  # Reuses the same flightcast.db.* / temporal_queries / audit modules
+  # as Streamlit, so coverage numbers and forecasts are bit-identical.
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: flightcast-app:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PYTHONPATH: /app/src
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: ${MARIADB_DATABASE}
+      DB_USER: ${MARIADB_USER}
+      DB_PASSWORD: ${MARIADB_PASSWORD}
+    ports:
+      - "${API_PORT:-8000}:8000"
+    volumes:
+      - ./src:/app/src:ro
+    networks:
+      - flightcast_net
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/healthz" ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    command: >
+      uvicorn flightcast.api.main:app
+      --host 0.0.0.0
+      --port 8000
+
+  # Next.js + React dashboard — VESPER-pattern guided tour
+  # Runs alongside Streamlit (8501); judges can compare both.
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    image: flightcast-web:latest
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_BASE: http://localhost:8000
+      API_BASE_INTERNAL: http://api:8000
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    networks:
+      - flightcast_net
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  mariadb_data:
+    driver: local
+
+networks:
+  flightcast_net:
+    driver: bridge

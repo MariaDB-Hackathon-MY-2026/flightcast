@@ -1,0 +1,45 @@
+{
+  "n_iterations": 100,
+  "as_of_ts": "2026-05-09 11:00:57.682504",
+  "scenarios": [
+    {
+      "name": "Per-route time-travel (~30 rows)",
+      "rows": 30,
+      "native_median": 0.40553799999543116,
+      "native_p95": 0.6463951502155395,
+      "manual_median": 0.704416999951718,
+      "manual_p95": 0.9620933998803591,
+      "speedup_median": 1.7369938204549367
+    },
+    {
+      "name": "Full-batch time-travel (~1500 rows)",
+      "rows": 1500,
+      "native_median": 6.647855499977595,
+      "native_p95": 8.828901100173423,
+      "manual_median": 6.133334499963894,
+      "manual_p95": 9.392006150142148,
+      "speedup_median": 0.9226034621216669
+    },
+    {
+      "name": "Full audit history (~9000 rows)",
+      "rows": 9000,
+      "native_median": 18.008926499987865,
+      "native_p95": 22.86035295005602,
+      "manual_median": 16.915668499905223,
+      "manual_p95": 20.829344150092766,
+      "speedup_median": 0.9392935497802505
+    },
+    {
+      "name": "Coverage-drift aggregate (the audit query)",
+      "rows": 6,
+      "native_median": 5.063471499852312,
+      "native_p95": 8.963106199939828,
+      "manual_median": 4.540422999980365,
+      "manual_p95": 5.285484749788338,
+      "speedup_median": 0.8967016008903766
+    }
+  ],
+  "min_speedup": 0.8967016008903766,
+  "max_speedup": 1.7369938204549367,
+  "median_speedup": 0.9309485059509587
+}
