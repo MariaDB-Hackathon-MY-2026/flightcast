@@ -43,6 +43,13 @@ export default function TimeTravelPage() {
     queryKey: ["sampled-routes"],
     queryFn: api.sampledRoutes,
   });
+  // Coverage per batch — fetched once and cached. Used to populate the
+  // "Empirical coverage" KPI card with the real percentage measured
+  // against ground-truth actuals.
+  const { data: coverageBatches = [] } = useQuery({
+    queryKey: ["coverage"],
+    queryFn: api.coverage,
+  });
 
   const [batchIdx, setBatchIdx] = useState<number>(0);
   const [routeId, setRouteId] = useState<number | null>(null);
@@ -87,6 +94,17 @@ export default function TimeTravelPage() {
     enabled:
       !!routeId && !!selectedBatch && showActuals,
   });
+
+  // Empirical coverage for the selected batch, from the cached /coverage data.
+  // Returns null when actuals haven't been measured yet (latest forecast
+  // before truth has come in), in which case the card stays as "—".
+  const empiricalCoverage = useMemo(() => {
+    if (!selectedBatch) return null;
+    const row = coverageBatches.find(
+      (c) => c.forecast_run_id === selectedBatch.forecast_run_id,
+    );
+    return row?.mean_coverage ?? null;
+  }, [coverageBatches, selectedBatch]);
 
   const stats = useMemo(() => {
     if (!forecasts || forecasts.length === 0) return null;
@@ -345,8 +363,18 @@ export default function TimeTravelPage() {
           icon={Shield}
           accent="blue"
           label="Empirical coverage"
-          value="—"
-          hint="Actuals not yet measured"
+          value={
+            empiricalCoverage != null
+              ? `${(empiricalCoverage * 100).toFixed(1)}%`
+              : "—"
+          }
+          hint={
+            empiricalCoverage != null
+              ? empiricalCoverage >= 0.85
+                ? "On target vs 90% guarantee"
+                : "Below target — drift detected"
+              : "Actuals not yet measured"
+          }
         />
         <IconStatCard
           icon={Square}
