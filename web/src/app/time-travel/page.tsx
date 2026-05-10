@@ -287,7 +287,7 @@ export default function TimeTravelPage() {
         </div>
 
         {/* Route selector */}
-        <div className="fc-stat flex flex-col !p-4 !rounded-[14px]">
+        <div className="tour-anchor-route fc-stat flex flex-col !p-4 !rounded-[14px]">
           <div className="fc-stat-label">Route</div>
           <div className="flex-1 flex items-center mt-1">
             <div className="relative w-full">

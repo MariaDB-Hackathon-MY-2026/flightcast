@@ -5,7 +5,7 @@
  * THE TOUR IS THE DEMO VIDEO STORYBOARD.
  * Each step = one scene. Click "Next" while recording voice-over.
  *
- * 18 steps total. Bodies are intentionally short (max 2 sentences) so
+ * 19 steps total. Bodies are intentionally short (max 2 sentences) so
  * the popover is glanceable; the page itself does the heavy explaining.
  *
  * Pattern: each step declares the route to navigate to, a CSS selector
@@ -59,7 +59,16 @@ export const TOUR_STEPS: TourStep[] = [
       "Each tick on this slider is a real ROW_START timestamp from a committed MariaDB transaction. Drag it left and the chart re-issues the query at that exact moment in history.",
   },
 
-  // ─── 4 ─────────────────────────────────────────────────────────────
+  // ─── 4 NEW ────────────────────────────────────────────────────────
+  {
+    route: "/time-travel",
+    target: ".tour-anchor-route",
+    title: "Pick the route to audit",
+    content:
+      "50 sampled routes from the OpenFlights dataset, tagged hub, mid, or thin by traffic tier. Pick one and the dashboard re-queries MariaDB for that route at the audit timestamp; route plus timestamp is the two axis question the database answers in one SQL.",
+  },
+
+  // ─── 5 ─────────────────────────────────────────────────────────────
   {
     route: "/time-travel",
     target: ".tour-anchor-stats",
@@ -68,7 +77,7 @@ export const TOUR_STEPS: TourStep[] = [
       "Four KPIs from the selected batch, including empirical coverage measured against ground truth. MAPIE guarantees that at least 90% of actual demand falls inside the band, and calibrated runs land at 91 to 92%.",
   },
 
-  // ─── 5 ─────────────────────────────────────────────────────────────
+  // ─── 6 ─────────────────────────────────────────────────────────────
   {
     route: "/time-travel",
     target: ".tour-anchor-forecast",
@@ -77,7 +86,7 @@ export const TOUR_STEPS: TourStep[] = [
       "A real LightGBM 30 day forecast for the selected route, with the violet 90% conformal band drawn on top. Toggle 'Show actuals' and amber dots appear inside the band, validating the coverage guarantee live.",
   },
 
-  // ─── 6 ─────────────────────────────────────────────────────────────
+  // ─── 7 ─────────────────────────────────────────────────────────────
   {
     route: "/time-travel",
     target: ".tour-anchor-live-sql",
@@ -86,7 +95,7 @@ export const TOUR_STEPS: TourStep[] = [
       "This is not a render of the SQL; it is the exact query that just produced the chart above. Copy it into any MariaDB 11.8 client and you get back the same 30 rows.",
   },
 
-  // ─── 7 ─────────────────────────────────────────────────────────────
+  // ─── 8 ─────────────────────────────────────────────────────────────
   {
     route: "/forecast-explorer",
     target: ".tour-anchor-all-history",
@@ -95,7 +104,7 @@ export const TOUR_STEPS: TourStep[] = [
       "Click 'All history' in the View mode picker above to overlay six committed model versions in six colors. Behind it is a single FOR SYSTEM_TIME ALL query, no Python loop and no MLflow API calls.",
   },
 
-  // ─── 8 ─────────────────────────────────────────────────────────────
+  // ─── 9 ─────────────────────────────────────────────────────────────
   {
     route: "/forecast-explorer",
     target: ".tour-anchor-all-history",
@@ -104,7 +113,7 @@ export const TOUR_STEPS: TourStep[] = [
       "Each colored ribbon is one committed model version with its own 90% confidence band. Where the bands stack tightly together coverage held; where they spread apart you are seeing drift in real time.",
   },
 
-  // ─── 9 ─────────────────────────────────────────────────────────────
+  // ─── 10 ────────────────────────────────────────────────────────────
   {
     route: "/forecast-explorer",
     target: ".tour-anchor-feature-card",
@@ -113,7 +122,7 @@ export const TOUR_STEPS: TourStep[] = [
       "FOR SYSTEM_TIME AS OF and FOR SYSTEM_TIME ALL are both native to MariaDB. MySQL has neither, PostgreSQL needs the temporal_tables extension, and SQLite has nothing equivalent.",
   },
 
-  // ─── 10 ────────────────────────────────────────────────────────────
+  // ─── 11 ────────────────────────────────────────────────────────────
   {
     route: "/coverage-drift",
     target: ".tour-anchor-methodology",
@@ -122,7 +131,7 @@ export const TOUR_STEPS: TourStep[] = [
       "Runs 1 to 4 use σ = 0.10 noise on the synthetic actuals; runs 5 and 6 use σ = 0.22, simulating a fuel price shock. Expected outcome: 1 to 4 hold near 90% coverage, 5 and 6 collapse, and the data below confirms it.",
   },
 
-  // ─── 11 ────────────────────────────────────────────────────────────
+  // ─── 12 ────────────────────────────────────────────────────────────
   {
     route: "/coverage-drift",
     target: ".tour-anchor-drift-chart",
@@ -131,7 +140,7 @@ export const TOUR_STEPS: TourStep[] = [
       "4 of 6 runs sit at 91.2% coverage; 2 of 6 collapsed to 58.7%. Behind these tiles is one GROUP BY against FOR SYSTEM_TIME ALL, with no MLflow tracking server and no shadow tables.",
   },
 
-  // ─── 12 ────────────────────────────────────────────────────────────
+  // ─── 13 ────────────────────────────────────────────────────────────
   {
     route: "/coverage-drift",
     target: ".tour-anchor-winkler",
@@ -140,7 +149,7 @@ export const TOUR_STEPS: TourStep[] = [
       "Coverage tells you whether actuals fell inside the band; Winkler tells you how good the band was, with lower being better. Runs 1 to 4 sit around 7,300; runs 5 and 6 jump to 24,000, a 3.3 times escalation caught before coverage breaks.",
   },
 
-  // ─── 13 NEW ────────────────────────────────────────────────────────
+  // ─── 14 ────────────────────────────────────────────────────────────
   {
     route: "/coverage-drift",
     target: ".tour-anchor-diff",
@@ -149,7 +158,7 @@ export const TOUR_STEPS: TourStep[] = [
       "Pick two committed model versions and a route to see what changed day by day. The bars show the per-date delta, and the SQL behind it is one self join across two FOR SYSTEM_TIME AS OF snapshots, no Python diffing required.",
   },
 
-  // ─── 14 ────────────────────────────────────────────────────────────
+  // ─── 15 ────────────────────────────────────────────────────────────
   {
     route: "/how-it-works",
     target: ".tour-anchor-architecture",
@@ -158,7 +167,7 @@ export const TOUR_STEPS: TourStep[] = [
       "Five layers: ingestion, MariaDB with system versioning, ML pipeline, query layer, dashboard. Notably absent: MLflow, Weights & Biases, DataDog, Evidently; the audit trail is structural, not bolted on.",
   },
 
-  // ─── 15 ────────────────────────────────────────────────────────────
+  // ─── 16 ────────────────────────────────────────────────────────────
   {
     route: "/how-it-works",
     target: ".tour-anchor-comparison",
@@ -167,7 +176,7 @@ export const TOUR_STEPS: TourStep[] = [
       "The right column shows what FlightCast replaces: tracking servers, custom drift dashboards, replay infrastructure, and shadow tables. The bottom line: the moat is the math layer, not the slider.",
   },
 
-  // ─── 16 NEW ────────────────────────────────────────────────────────
+  // ─── 17 ────────────────────────────────────────────────────────────
   {
     route: "/how-it-works",
     target: ".tour-anchor-hero-sql",
@@ -176,7 +185,7 @@ export const TOUR_STEPS: TourStep[] = [
       "Five copy and run queries: time travel, prediction diff, full audit log, calibration drift, and great circle distance. Every one of them fails to parse on MySQL or PostgreSQL, so this section is the moat in code form.",
   },
 
-  // ─── 17 ────────────────────────────────────────────────────────────
+  // ─── 18 ────────────────────────────────────────────────────────────
   {
     route: "/how-it-works",
     target: ".tour-anchor-math",
@@ -185,7 +194,7 @@ export const TOUR_STEPS: TourStep[] = [
       "The formula on screen is MAPIE's conformal interval and its coverage theorem. For exchangeable data, at least 90% of actual values land inside the predicted band; that is what 'guaranteed 90% coverage' means.",
   },
 
-  // ─── 18 ────────────────────────────────────────────────────────────
+  // ─── 19 ────────────────────────────────────────────────────────────
   {
     route: "/how-it-works",
     target: ".tour-anchor-close",

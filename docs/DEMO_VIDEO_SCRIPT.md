@@ -8,7 +8,7 @@
 
 > **The pitch tour IS the storyboard.** Click "Start Pitch Tour" in the sidebar, then click "Next" while reading each scene's voice-over. The popover stays visible the whole time and never overlaps the highlighted card.
 >
-> **The full tour has 18 steps; this video uses the strongest 9.** Steps 6 (Live SQL), 8 (rainbow detail), 9 (MariaDB feature card), 10 (drift methodology), 12 (Winkler), 13 (prediction diff), 16 (hero SQL), and 17 (conformal math) are bonus-depth steps for self-paced exploration after the video. While recording, click **Next** until the popover title matches the scene below — skip past the bonus steps.
+> **The full tour has 19 steps; this video uses the strongest 9.** Steps 4 (route picker), 7 (Live SQL), 9 (rainbow detail), 10 (MariaDB feature card), 11 (drift methodology), 13 (Winkler), 14 (prediction diff), 17 (hero SQL), and 18 (conformal math) are bonus-depth steps for self-paced exploration after the video. While recording, click **Next** until the popover title matches the scene below — skip past the bonus steps.
 
 ---
 
@@ -31,7 +31,7 @@
 
 ## The 9 video scenes (≈ 30 seconds each)
 
-Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **video scene**, not the underlying tour step (the tour has 18 steps; the video uses 9).
+Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **video scene**, not the underlying tour step (the tour has 19 steps; the video uses 9).
 
 > Tip: while the tour is active, the page underneath is fully interactive. Drag the slider, click a chart, change the route — tour state stays put. Use this for the live moments in scenes 3 and 5.
 
@@ -39,7 +39,7 @@ Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **
 
 ### Scene 1 · The hook (00:00 – 00:30)
 
-**Tour step:** 1 of 18 — *The ML audit problem*
+**Tour step:** 1 of 19 — *The ML audit problem*
 **Visible:** Time Travel page header (FlightCast title + subtitle + status pills)
 **Action:** none — let the page sit while you speak
 
@@ -51,7 +51,7 @@ Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **
 
 ### Scene 2 · The MariaDB primitive (00:30 – 01:00)
 
-**Tour step:** 2 of 18 — *Ask MariaDB*
+**Tour step:** 2 of 19 — *Ask MariaDB*
 **Visible:** "Ask MariaDB" violet hero callout
 **Action:** mouse hovers the `FOR SYSTEM_TIME AS OF` code chip inside the callout
 
@@ -63,7 +63,7 @@ Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **
 
 ### Scene 3 · Live time travel — DRAG THE SLIDER (01:00 – 01:35)
 
-**Tour step:** 3 of 18 — *Drag the audit slider*
+**Tour step:** 3 of 19 — *Drag the audit slider*
 **Visible:** "Audit point in time" card with date pill + slider
 **Action:** **drag the slider from the latest batch (right) to the earliest (left), then back to the right.** The chart updates each step. *(First live-interaction moment — do it slowly.)*
 
@@ -75,7 +75,7 @@ Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **
 
 ### Scene 4 · The math layer (01:35 – 02:05)
 
-**Tour step:** 4 of 18 — *Coverage you can verify*
+**Tour step:** 5 of 19 — *Coverage you can verify* (skip past tour step 4 — bonus route picker)
 **Visible:** the 4 KPI cards (Model version / Empirical coverage / Median 90% CI / Forecast horizon)
 **Action:** mouse hovers the "Empirical coverage" KPI card
 
@@ -87,7 +87,7 @@ Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **
 
 ### Scene 5 · 30-day forecast — TOGGLE ACTUALS (02:05 – 02:35)
 
-**Tour step:** 5 of 18 — *30 day forecast and band*
+**Tour step:** 6 of 19 — *30 day forecast and band*
 **Visible:** the chart card showing the predicted-demand line + violet conformal band
 **Action:** **toggle "Show actuals"** in the chart-card top-right. Amber dots appear over the band. Then toggle it off.
 
@@ -99,7 +99,7 @@ Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **
 
 ### Scene 6 · All-history rainbow — SIX VERSIONS, ONE QUERY (02:35 – 03:10)
 
-**Tour step:** 7 of 18 — *Six versions, one query* (skip past tour step 6 — bonus). Optional: also click **Next** once into step 8 to read the per-ribbon explanation.
+**Tour step:** 8 of 19 — *Six versions, one query* (skip past tour step 7 — bonus). Optional: also click **Next** once into step 9 to read the per-ribbon explanation.
 **Visible:** Forecast Explorer · "All history" view with six overlaid forecast bands in six colors
 **Action:** if not already on history view, **click "All history"** in the View mode picker. Let the rainbow render.
 
@@ -111,7 +111,7 @@ Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **
 
 ### Scene 7 · DRIFT — the killer demo (03:10 – 04:05)
 
-**Tour step:** 11 of 18 — *Drift caught by one query* (skip past tour steps 9 and 10 — bonus). After the voice-over, optionally click further to step 12 (Winkler) and step 13 (Prediction diff) if you have time.
+**Tour step:** 12 of 19 — *Drift caught by one query* (skip past tour steps 10 and 11 — bonus). After the voice-over, optionally click further to step 13 (Winkler) and step 14 (Prediction diff) if you have time.
 **Visible:** Coverage Drift page — audit headline tiles ("4 / 6 calibrated · 91.2%" vs "2 / 6 drift · 58.7%")
 **Action:** scroll down once so the per-batch RunStatusCards are also visible. Optional: also briefly show the Winkler section (3.3× jump).
 
@@ -123,7 +123,7 @@ Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **
 
 ### Scene 8 · Architecture + differentiation (04:05 – 04:35)
 
-**Tour steps:** 14 of 18 (*Five layers, zero deps*) → 15 of 18 (*Vs. the standard MLOps stack*) — skip past tour steps 12 (Winkler) and 13 (Prediction diff), both bonus. Optional: also click into step 16 (Hero SQL queries) to highlight the moat-in-code section.
+**Tour steps:** 15 of 19 (*Five layers, zero deps*) → 16 of 19 (*Vs. the standard MLOps stack*) — skip past tour steps 13 (Winkler) and 14 (Prediction diff), both bonus. Optional: also click into step 17 (Hero SQL queries) to highlight the moat-in-code section.
 **Visible:** How It Works page — the architecture diagram, then scroll up to the comparison table
 **Action:** let the architecture sit on screen, then click Next once to land on the comparison table; mouse trace down the right-hand "FlightCast" column
 
@@ -135,7 +135,7 @@ Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **
 
 ### Scene 9 · Open infrastructure — close (04:35 – 05:00)
 
-**Tour step:** 18 of 18 — *Open infrastructure* (skip past tour step 17 — bonus)
+**Tour step:** 19 of 19 — *Open infrastructure* (skip past tour step 18 — bonus)
 **Visible:** "For judges & reviewers" section + footer
 **Action:** click **Finish** in the popover after you've finished speaking. Tour closes cleanly.
 
@@ -163,18 +163,19 @@ Click **Start Pitch Tour** in the sidebar. Step numbering below refers to the **
 
 ## Bonus tour steps (NOT in the video, but on the live demo)
 
-If a judge clicks through the tour themselves on the live dashboard, they get nine extra depth-steps the video skips:
+If a judge clicks through the tour themselves on the live dashboard, they get ten extra depth-steps the video skips:
 
 | # | Title | Anchor | What it adds |
 |---|---|---|---|
-| 6 | Live SQL bridge | Live SQL panel on /time-travel | Shows the SQL that produced the chart, copy/paste-able |
-| 8 | What the rainbow shows | All-history chart on /forecast-explorer | Per-ribbon read of which run drifted vs held |
-| 9 | MariaDB exclusive primitives | Feature card on /forecast-explorer | FOR SYSTEM_TIME AS OF vs ALL, the MySQL/PG/SQLite gap |
-| 10 | The drift methodology | Methodology strip on /coverage-drift | σ = 0.10 for runs 1 to 4, σ = 0.22 for 5 and 6, the exact recipe |
-| 12 | Winkler interval score | Winkler section on /coverage-drift | The 3.3× jump that catches drift before coverage breaks |
-| 13 | Prediction diff between batches | Diff section on /coverage-drift | One self-join across two FOR SYSTEM_TIME AS OF snapshots, no Python needed |
-| 16 | Five MariaDB only queries | Hero SQL section on /how-it-works | The five copy-and-run queries that fail on MySQL or PostgreSQL |
-| 17 | The conformal math | Math section on /how-it-works | The MAPIE theorem for stats-literate judges |
+| 4 | Pick the route to audit | Route card on /time-travel | 50 sampled OpenFlights routes (hub/mid/thin tier), the second axis of the audit query |
+| 7 | Live SQL bridge | Live SQL panel on /time-travel | Shows the SQL that produced the chart, copy/paste-able |
+| 9 | What the rainbow shows | All-history chart on /forecast-explorer | Per-ribbon read of which run drifted vs held |
+| 10 | MariaDB exclusive primitives | Feature card on /forecast-explorer | FOR SYSTEM_TIME AS OF vs ALL, the MySQL/PG/SQLite gap |
+| 11 | The drift methodology | Methodology strip on /coverage-drift | σ = 0.10 for runs 1 to 4, σ = 0.22 for 5 and 6, the exact recipe |
+| 13 | Winkler interval score | Winkler section on /coverage-drift | The 3.3× jump that catches drift before coverage breaks |
+| 14 | Prediction diff between batches | Diff section on /coverage-drift | One self-join across two FOR SYSTEM_TIME AS OF snapshots, no Python needed |
+| 17 | Five MariaDB only queries | Hero SQL section on /how-it-works | The five copy-and-run queries that fail on MySQL or PostgreSQL |
+| 18 | The conformal math | Math section on /how-it-works | The MAPIE theorem for stats-literate judges |
 
 These are deliberate additions for jurors who want depth without pausing the video.
 
@@ -198,7 +199,7 @@ These are deliberate additions for jurors who want depth without pausing the vid
 When you upload, include a one-line description and these links:
 
 - **Live demo:** http://localhost:3000 (or your hosted URL)
-- **Pitch tour:** click "Start Pitch Tour" in the sidebar — 18 steps, walks the same 9 scenes plus 9 bonus depth-steps (Live SQL, rainbow detail, feature card, drift methodology, Winkler, prediction diff, hero SQL, conformal math, plus a closing recap)
+- **Pitch tour:** click "Start Pitch Tour" in the sidebar — 19 steps, walks the same 9 scenes plus 10 bonus depth-steps (route picker, Live SQL, rainbow detail, feature card, drift methodology, Winkler, prediction diff, hero SQL, conformal math)
 - **Whitepaper:** `Elegant.md` — ~6,300 words including the conformal-coverage theorem, MariaDB feature audit, performance benchmarks
 - **Judge guide:** `docs/JUDGES_TESTING_GUIDE.md` — four time-budget options (2 / 5 / 15 / 45 min)
 - **Repo:** https://github.com/TP070056/flightcast
