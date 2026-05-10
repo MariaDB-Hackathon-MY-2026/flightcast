@@ -25,17 +25,17 @@ from pptx.util import Emu, Inches, Pt
 
 # ─── Paths ──────────────────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent
-SHOTS = ROOT / "screenshot"
+SHOTS = ROOT / "docs" / "screenshots"
 OUT = ROOT / "docs" / "FlightCast_Pitch_Deck.pptx"
 ARCH = ROOT / "web" / "public" / "architecture.png"
 
 IMG = {
-    "comparison": SHOTS / "Screenshot 2026-05-10 175052.png",
-    "dashboard_hero": SHOTS / "Screenshot 2026-05-10 175117.png",
-    "time_travel": SHOTS / "Screenshot 2026-05-10 175132.png",
-    "rainbow": SHOTS / "Screenshot 2026-05-10 175147.png",
-    "drift_tiles": SHOTS / "Screenshot 2026-05-10 175158.png",
-    "math": SHOTS / "Screenshot 2026-05-10 175215.png",
+    "comparison": SHOTS / "comparison-table.png",
+    "dashboard_hero": SHOTS / "dashboard-hero.png",
+    "time_travel": SHOTS / "time-travel.png",
+    "rainbow": SHOTS / "all-history-rainbow.png",
+    "drift_tiles": SHOTS / "drift-tiles.png",
+    "math": SHOTS / "conformal-math.png",
     "architecture": ARCH,
 }
 

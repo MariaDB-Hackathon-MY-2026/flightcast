@@ -42,3 +42,8 @@ mariadb_data/
 
 # Internal-only docs (planning, research, critiques) — kept on local disk for reference
 .internal/
+
+# Office lock files (created when a doc is open in Word / PowerPoint / Excel)
+~$*.pptx
+~$*.docx
+~$*.xlsx
