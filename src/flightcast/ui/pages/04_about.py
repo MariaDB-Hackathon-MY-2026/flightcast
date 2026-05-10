@@ -223,9 +223,9 @@ st.markdown(
     """
 The repository ships two documents specifically for evaluators:
 
-- **[`docs/JUDGES_TESTING_GUIDE.md`](https://github.com/TP070056/flightcast/blob/main/docs/JUDGES_TESTING_GUIDE.md)**
+- **[`docs/JUDGES_TESTING_GUIDE.md`](https://github.com/imycc1221/flightcast/blob/main/docs/JUDGES_TESTING_GUIDE.md)**
   — four time-budget options (2 min / 5 min / 15 min / 45 min) for verifying every claim on this page.
-- **[`Elegant.md`](https://github.com/TP070056/flightcast/blob/main/Elegant.md)**
+- **[`Elegant.md`](https://github.com/imycc1221/flightcast/blob/main/Elegant.md)**
   — the technical whitepaper (~6,300 words), including the head-to-head MariaDB-vs-PostgreSQL/MySQL
   comparison (§3), the conformal coverage theorem (§4), the performance benchmark (§12), and
   honest limitations (§16).
@@ -238,5 +238,5 @@ For a 2-minute zero-setup evaluation: open `docs/benchmark_results.json` and §1
 st.divider()
 st.caption(
     "Built by TP070056 · APU Malaysia · MariaDB Hackathon 2026 · "
-    "[github.com/TP070056/flightcast](https://github.com)"
+    "[github.com/imycc1221/flightcast](https://github.com)"
 )

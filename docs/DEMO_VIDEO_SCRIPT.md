@@ -202,4 +202,4 @@ When you upload, include a one-line description and these links:
 - **Pitch tour:** click "Start Pitch Tour" in the sidebar — 19 steps, walks the same 9 scenes plus 10 bonus depth-steps (route picker, Live SQL, rainbow detail, feature card, drift methodology, Winkler, prediction diff, hero SQL, conformal math)
 - **Whitepaper:** `Elegant.md` — ~6,300 words including the conformal-coverage theorem, MariaDB feature audit, performance benchmarks
 - **Judge guide:** `docs/JUDGES_TESTING_GUIDE.md` — four time-budget options (2 / 5 / 15 / 45 min)
-- **Repo:** https://github.com/TP070056/flightcast
+- **Repo:** https://github.com/imycc1221/flightcast

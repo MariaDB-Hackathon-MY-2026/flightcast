@@ -264,7 +264,7 @@ LIMIT 10;`,
         <ul className="list-disc list-inside space-y-1 text-slate-300">
           <li>
             <a
-              href="https://github.com/TP070056/flightcast/blob/main/docs/JUDGES_TESTING_GUIDE.md"
+              href="https://github.com/imycc1221/flightcast/blob/main/docs/JUDGES_TESTING_GUIDE.md"
               className="text-accent-blue underline"
             >
               docs/JUDGES_TESTING_GUIDE.md
@@ -273,7 +273,7 @@ LIMIT 10;`,
           </li>
           <li>
             <a
-              href="https://github.com/TP070056/flightcast/blob/main/Elegant.md"
+              href="https://github.com/imycc1221/flightcast/blob/main/Elegant.md"
               className="text-accent-blue underline"
             >
               Elegant.md

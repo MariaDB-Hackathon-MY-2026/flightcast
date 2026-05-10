@@ -75,7 +75,7 @@ export function Sidebar() {
       {/* ── Help / Settings ────────────────────────────────── */}
       <nav className="flex flex-col gap-0.5 mb-3 pt-3 border-t border-white/5">
         <a
-          href="https://github.com/TP070056/flightcast"
+          href="https://github.com/imycc1221/flightcast"
           target="_blank"
           rel="noopener"
           className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-slate-400 hover:bg-white/5 hover:text-slate-200 transition"

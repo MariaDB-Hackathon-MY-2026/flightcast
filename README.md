@@ -36,7 +36,7 @@ A 4-page Streamlit dashboard that lets you slide back through time across six ve
 ## Five-minute quickstart
 
 ```bash
-git clone https://github.com/TP070056/flightcast.git
+git clone https://github.com/imycc1221/flightcast.git
 cd flightcast
 cp .env.example .env
 

@@ -1,7 +1,7 @@
 # FlightCast — Time-Travel ML Auditing with MariaDB System-Versioned Temporal Tables
 
 > **MariaDB Hackathon Malaysia 2026 — Innovation Track**
-> Repository: [github.com/TP070056/flightcast](https://github.com/TP070056/flightcast)
+> Repository: [github.com/imycc1221/flightcast](https://github.com/imycc1221/flightcast)
 > Demo: `docker compose up -d && docker compose exec app python -m flightcast.bootstrap`
 
 ---
@@ -269,7 +269,7 @@ ORDER BY forecast_date, ROW_START;
 ## 7. Quickstart: One Docker Command
 
 ```bash
-git clone https://github.com/TP070056/flightcast.git
+git clone https://github.com/imycc1221/flightcast.git
 cd flightcast
 cp .env.example .env
 docker compose up -d
@@ -609,7 +609,7 @@ flightcast/
 
 ```bash
 # 1. Clone and configure
-git clone https://github.com/TP070056/flightcast.git
+git clone https://github.com/imycc1221/flightcast.git
 cd flightcast
 cp .env.example .env          # defaults work for local dev
 

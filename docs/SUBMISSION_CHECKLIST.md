@@ -67,14 +67,14 @@ Judges who only have 2 minutes look at screenshots before clicking the video. Ca
 
 ### [YOU] Push to GitHub (~10 min)
 
-- [ ] Create the GitHub repo if it doesn't exist (`github.com/TP070056/flightcast`)
+- [ ] Create the GitHub repo if it doesn't exist (`github.com/imycc1221/flightcast`)
 - [ ] Add it as a remote: `git remote add origin git@github.com:TP070056/flightcast.git`
 - [ ] Push the main branch and ALL tags:
   ```bash
   git push -u origin main
   git push --tags
   ```
-- [ ] Confirm the README renders correctly at `github.com/TP070056/flightcast`
+- [ ] Confirm the README renders correctly at `github.com/imycc1221/flightcast`
 - [ ] Click into `Elegant.md`, `docs/JUDGES_TESTING_GUIDE.md`, `pipeline_research/00_RESEARCH_SUMMARY.md` — verify formatting
 - [ ] **If the architecture image doesn't render** (sometimes happens because of GitHub's image cache), force a refresh: open the image directly via raw URL, then reload the README.
 
@@ -84,7 +84,7 @@ When the hackathon submission portal opens (or if you submit retroactively):
 
 - [ ] **Title:** FlightCast — Database-Native ML Audit for Aviation Demand Forecasting
 - [ ] **Track:** Innovation
-- [ ] **Repo URL:** `https://github.com/TP070056/flightcast`
+- [ ] **Repo URL:** `https://github.com/imycc1221/flightcast`
 - [ ] **Demo URL:** the YouTube link from the video upload step
 - [ ] **One-line pitch (use this verbatim):** *"FlightCast is the first system using MariaDB's `FOR SYSTEM_TIME ALL` to mathematically validate that an ML model's prediction-coverage guarantee held in production — proving with one SQL query whether your model was still trustworthy six months ago."*
 - [ ] **Long description:** copy `Elegant.md §1 TL;DR` (~250 words)
