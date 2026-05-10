@@ -47,3 +47,6 @@ mariadb_data/
 ~$*.pptx
 ~$*.docx
 ~$*.xlsx
+
+# Generated pitch deck — script lives in .internal/, output never tracked
+docs/FlightCast_Pitch_Deck.pptx

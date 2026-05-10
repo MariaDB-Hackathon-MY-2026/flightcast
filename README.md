@@ -194,13 +194,10 @@ docker compose exec app python -m flightcast.benchmarks.temporal_benchmark
 
 | Document | Audience | Length |
 |---|---|---|
-| [`Elegant.md`](Elegant.md) | Technical reviewers, judges with stats background | ~6,300 words |
+| [`Elegant.md`](Elegant.md) | Technical reviewers and judges with a statistics background | ~6,300 words |
 | [`docs/JUDGES_TESTING_GUIDE.md`](docs/JUDGES_TESTING_GUIDE.md) | Hackathon judges | 4 time-budget options (2 / 5 / 15 / 45 min) |
-| [`docs/DEMO_VIDEO_SCRIPT.md`](docs/DEMO_VIDEO_SCRIPT.md) | Video producer (5-min cut) | 9 scenes |
-| [`docs/FULL_PRESENTATION_SCRIPT.md`](docs/FULL_PRESENTATION_SCRIPT.md) | Live walk-through (~10 min) | 19 steps, plain English |
-| [`docs/SLIDE_DECK_OUTLINE.md`](docs/SLIDE_DECK_OUTLINE.md) | Slide preparation | 12 main + 3 backup slides |
-| [`docs/SUBMISSION_CHECKLIST.md`](docs/SUBMISSION_CHECKLIST.md) | Submission tracking | Pre-flight QA |
-| [`docs/FlightCast_Pitch_Deck.pptx`](docs/FlightCast_Pitch_Deck.pptx) | Judge-facing deck | 15 slides, 16:9 |
+| [`docs/screenshots/`](docs/screenshots/) | Visual evidence for reviewers without local setup | 6 PNGs |
+| [`docs/benchmark_results.json`](docs/benchmark_results.json) | Reproducible performance numbers | 100-iteration runs |
 
 ---
 
@@ -216,14 +213,11 @@ flightcast/
 ├── pyproject.toml / requirements.txt      Python dependencies
 │
 ├── docs/
-│   ├── assets/                            Brand assets (logos)
+│   ├── assets/                            Brand assets (sponsor logos)
 │   ├── screenshots/                       Dashboard screenshots used in this README
-│   ├── FlightCast_Pitch_Deck.pptx         Generated pitch deck (15 slides)
-│   ├── JUDGES_TESTING_GUIDE.md            Time-budgeted evaluation paths
-│   ├── DEMO_VIDEO_SCRIPT.md               5-minute demo video script
-│   ├── FULL_PRESENTATION_SCRIPT.md        10-minute walkthrough script
-│   ├── SLIDE_DECK_OUTLINE.md              Slide-by-slide outline
-│   └── SUBMISSION_CHECKLIST.md            Submission QA checklist
+│   ├── benchmark_chart.png                Performance benchmark visualisation
+│   ├── benchmark_results.json             Captured 100-iteration timing data
+│   └── JUDGES_TESTING_GUIDE.md            Time-budgeted evaluation paths
 │
 ├── initdb/                                MariaDB initialisation
 │   ├── 01-openflights-create.sql          Reference-table schema
@@ -250,9 +244,6 @@ flightcast/
 │   ├── src/components/                    Charts, common, layout, tour
 │   ├── public/                            Static assets (architecture diagram)
 │   └── package.json                       Node dependencies
-│
-├── scripts/
-│   └── build_slide_deck.py                Regenerate FlightCast_Pitch_Deck.pptx
 │
 └── tests/                                 Unit + integration test suite
 ```
