@@ -1,0 +1,52 @@
+# Environment
+.env
+*.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.coverage
+htmlcov/
+
+# Data / generated artifacts
+docs/benchmark_chart.png
+tests/benchmark_results.csv
+
+# Backups (MariaDB dumps; created by Phase 0/2/3)
+backups/
+*.sql.gz
+
+# Persisted models (created in Phase 4 multi-level fan chart)
+models/*.pkl
+
+# Docker
+mariadb_data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Reference / source material we should not commit (canonical copy lives in src/flightcast/ui/assets/)
+*.docx
+*.pdf
+/system architecture diagram.png
+
+# Internal-only docs (planning, research, critiques) — kept on local disk for reference
+.internal/
+
+# Office lock files (created when a doc is open in Word / PowerPoint / Excel)
+~$*.pptx
+~$*.docx
+~$*.xlsx
+
+# Generated pitch deck — script lives in .internal/, output never tracked
+docs/FlightCast_Pitch_Deck.pptx

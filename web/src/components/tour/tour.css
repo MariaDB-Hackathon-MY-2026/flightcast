@@ -1,0 +1,225 @@
+/**
+ * Tour styling — direct port of VESPER's GuidedTour.css with the
+ * critical pointer-events fixes for "user can click underlying UI without
+ * dismissing the tour".
+ */
+
+/* The full-screen overlay does NOT capture pointer events. The dim
+   "spotlight" effect is painted by the highlight element's box-shadow,
+   so we don't need a real DOM dim layer here. Setting pointer-events:none
+   means clicks pass straight through to underlying cards / buttons —
+   tour state is preserved across user interaction. */
+.tour-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+/* The "punch-through" backdrop: one element with a giant outer box-shadow
+   creates the spotlight (everything else is darkened) plus a glowing ring
+   around the highlighted element. */
+.tour-highlight {
+  position: fixed;
+  border-radius: 10px;
+  border: 2px solid #FFFFFF;
+  box-shadow:
+    0 0 0 9999px rgba(0, 0, 0, 0.62),
+    0 0 24px rgba(255, 255, 255, 0.45);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none; /* clicks pass through to the highlighted element */
+  z-index: 10001;
+}
+
+/* The popover card — this IS interactive (Back / Next / Close buttons). */
+.tour-popover {
+  position: fixed;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem 1rem 1.2rem;
+  z-index: 10002;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  animation: tour-pop-in 0.28s ease-out;
+  transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #E2E8F0;
+  pointer-events: auto;
+}
+
+@keyframes tour-pop-in {
+  from { opacity: 0; transform: scale(0.96) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Close button */
+.tour-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94A3B8;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.tour-close:hover {
+  color: #F1F5F9;
+  border-color: rgba(148, 163, 184, 0.25);
+  background: rgba(148, 163, 184, 0.08);
+}
+
+/* Step indicator (eyebrow) */
+.tour-step-indicator {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #C4B5FD;
+  margin-bottom: 0.5rem;
+}
+
+/* Title */
+.tour-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  line-height: 1.25;
+  margin: 0 0 0.55rem 0;
+  padding-right: 1.4rem; /* room for close button */
+}
+
+/* Body content */
+.tour-content {
+  color: #CBD5E1;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0 0 0.95rem 0;
+}
+
+/* Off-page / fallback hint */
+.tour-hint {
+  margin: 0 0 0.9rem 0;
+  padding: 0.45rem 0.7rem;
+  background: rgba(245, 158, 11, 0.10);
+  border-left: 3px solid var(--accent-amber);
+  border-radius: 4px;
+  color: #FCD34D;
+  font-size: 0.84rem;
+}
+
+/* Footer with Back / Next buttons */
+.tour-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tour-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+.tour-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.tour-btn--secondary {
+  background: transparent;
+  color: #CBD5E1;
+  border-color: rgba(148, 163, 184, 0.25);
+}
+.tour-btn--secondary:hover:not(:disabled) {
+  background: rgba(148, 163, 184, 0.08);
+  color: #F1F5F9;
+}
+.tour-btn--primary {
+  background: #8B5CF6;
+  color: #F8FAFC;
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 2px 8px rgba(167, 139, 250, 0.25);
+}
+.tour-btn--primary:hover {
+  filter: brightness(1.1);
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+   Directional caret connecting popover → highlight (only when adjacent)
+   ────────────────────────────────────────────────────────────────────── */
+
+.tour-popover--bottom::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 32px;
+  border: 9px solid transparent;
+  border-bottom-color: rgba(255, 255, 255, 0.55);
+}
+.tour-popover--top::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 32px;
+  border: 9px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.55);
+}
+.tour-popover--right::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 24px;
+  border: 9px solid transparent;
+  border-right-color: rgba(255, 255, 255, 0.55);
+}
+.tour-popover--left::before {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 24px;
+  border: 9px solid transparent;
+  border-left-color: rgba(255, 255, 255, 0.55);
+}
+/* Fallback (popover floating in corner, no anchor relation) — no caret */
+.tour-popover--fallback::before {
+  display: none;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+   Anchor utility class — pages add this to elements that should be tour
+   targets. Has no visual effect; just a stable selector + scroll-margin.
+   ────────────────────────────────────────────────────────────────────── */
+
+.tour-anchor-audit-gap,
+.tour-anchor-callout,
+.tour-anchor-slider,
+.tour-anchor-route,
+.tour-anchor-stats,
+.tour-anchor-forecast,
+.tour-anchor-live-sql,
+.tour-anchor-all-history,
+.tour-anchor-feature-card,
+.tour-anchor-methodology,
+.tour-anchor-drift-chart,
+.tour-anchor-winkler,
+.tour-anchor-diff,
+.tour-anchor-architecture,
+.tour-anchor-comparison,
+.tour-anchor-hero-sql,
+.tour-anchor-math,
+.tour-anchor-close {
+  scroll-margin-top: 80px; /* room for sticky header */
+}
